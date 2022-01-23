@@ -28,7 +28,7 @@ For Using API
       }<br />
       where time is the date time of the day to view shedule<br />
       The following sample response is recived <br />
-      "table 1": {<br />
+      {"table 1": {<br />
         "Table Id": 1,<br />
         "Available Shedule": [<br />
             [<br />
@@ -47,6 +47,7 @@ For Using API
     }<br />
          Here corresponding to each table a list free time where table is available to book is provided like in above response for table 1 the user book table in the 3 free time<br />
          such as from 2022-01-23T00:00:00Z  to 2022-01-23T09:00:00Z<br />
+<br />
 3) user can view any booking  on http://127.0.0.1:8000/api/bookingDetail/<int:id><br />
       here id is booking id provided to user at time of booking<br />
        {<br />
