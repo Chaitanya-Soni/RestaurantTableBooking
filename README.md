@@ -18,9 +18,7 @@ For Using API
         "BookingId": 3,
         "stime": "2022-01-23T12:00:00",
         "etime": "2022-01-23T15:00:00"
-      } and status code is 200 also recived
-     
-     and if its unacceptable then status code 406 is recived
+      } and status code is 200 also recived and if its unacceptable then status code 406 is recived
  
  2)   To view booking shedule of any day 
       make a post request on http://127.0.0.1:8000/api/bookingShedule/
