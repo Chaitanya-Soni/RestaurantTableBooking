@@ -29,13 +29,7 @@ class TableApi(APIView):
         else :
             return Response(status=status.HTTP_400_BAD_REQUEST)
 class BookingApi(APIView):
-    def get_object(self,id):
-        try :
-            tbook = BookingTime.objects.get(id=id)
-            return tbook
-        except :
-            return "NOT FOUND"
-
+    
     def post(self,request,id):
         tablebook = table.objects.get(id=id)
         tbookings = BookingTime.objects.filter(tablebook = tablebook).order_by("stime")
@@ -85,6 +79,13 @@ class BookingApi(APIView):
         return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
 
 class BookingView(APIView):
+    def get_object(self,id):
+        try :
+            tbook = BookingTime.objects.get(id=id)
+            return tbook
+        except :
+            return "NOT FOUND"
+
     def get(self,request,id):
         tbook=self.get_object(id)
         if(tbook!="NOT FOUND"):
@@ -119,5 +120,5 @@ class BookingShedule(APIView):
                     comp = tbook.etime.replace(tzinfo=None)
                     if(comp < etime.replace(tzinfo=None)):
                         dfree.append([tbook.etime,etime])
-            d[tablebook.name] = dfree
+            d[tablebook.name] = {"Table Id" : tablebook.id , "Available Shedule":dfree}
         return Response(d) 
